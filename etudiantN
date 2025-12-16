@@ -1,0 +1,59 @@
+public class Etudiant {
+
+    String nom;
+    String prenom;
+    int age;
+    double note;
+     public Etudiant(String nom, String prenom, int age, double note) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.age = age;
+        this.note = note;
+         }
+
+    public static void main(String[] args) {
+
+        Etudiant[] tab = new Etudiant[50] ;
+
+        for (int i = 0; i < 50; i++) {
+            tab[i] = new Etudiant();
+            tab[i].nom = "nom" + i;
+            tab[i].prenom = "prenom" + i;
+            tab[i].age = 10 + i;
+            tab[i].note = 10;
+        }
+
+        for (int i = 0; i < 49; i++) {
+            for (int j = i + 1; j < 50; j++) {
+                if (tab[i].age > tab[j].age) {
+                    Etudiant e = tab[i];
+                    tab[i] = tab[j];
+                    tab[j] = e;
+                }
+            }
+        }
+
+        System.out.println("voici les 5 etudiants les plus qges");
+        for (int i = 45; i < 50; i++) {
+            System.out.println(tab[i].nom + " " + tab[i].prenom + " " + tab[i].age);
+        }
+
+        System.out.println("voici les 5 etudiant les moins ages");
+        for (int i = 0; i < 5; i++) {
+            System.out.println(tab[i].nom + " " + tab[i].prenom + " " + tab[i].age);
+        }
+
+        double maxN = tab[0].note;
+        Etudiant x = tab[0];
+
+        for (int i = 1; i < 50; i++) {
+            if (tab[i].note > maxN) {
+                maxN = tab[i].note;
+                x = tab[i];
+            }
+        }
+
+        System.out.println( "etudiant avec la plus grande note : " + x.nom + " " +x.prenom + " " +x.note
+        );
+    }
+}
